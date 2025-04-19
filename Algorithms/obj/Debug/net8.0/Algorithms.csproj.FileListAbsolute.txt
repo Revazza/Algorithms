@@ -1,0 +1,14 @@
+C:\Users\sandro_revazishvili\Desktop\code-maze-project\Algorithms\Algorithms\bin\Debug\net8.0\Algorithms.exe
+C:\Users\sandro_revazishvili\Desktop\code-maze-project\Algorithms\Algorithms\bin\Debug\net8.0\Algorithms.deps.json
+C:\Users\sandro_revazishvili\Desktop\code-maze-project\Algorithms\Algorithms\bin\Debug\net8.0\Algorithms.runtimeconfig.json
+C:\Users\sandro_revazishvili\Desktop\code-maze-project\Algorithms\Algorithms\bin\Debug\net8.0\Algorithms.dll
+C:\Users\sandro_revazishvili\Desktop\code-maze-project\Algorithms\Algorithms\bin\Debug\net8.0\Algorithms.pdb
+C:\Users\sandro_revazishvili\Desktop\code-maze-project\Algorithms\Algorithms\obj\Debug\net8.0\Algorithms.GeneratedMSBuildEditorConfig.editorconfig
+C:\Users\sandro_revazishvili\Desktop\code-maze-project\Algorithms\Algorithms\obj\Debug\net8.0\Algorithms.AssemblyInfoInputs.cache
+C:\Users\sandro_revazishvili\Desktop\code-maze-project\Algorithms\Algorithms\obj\Debug\net8.0\Algorithms.AssemblyInfo.cs
+C:\Users\sandro_revazishvili\Desktop\code-maze-project\Algorithms\Algorithms\obj\Debug\net8.0\Algorithms.csproj.CoreCompileInputs.cache
+C:\Users\sandro_revazishvili\Desktop\code-maze-project\Algorithms\Algorithms\obj\Debug\net8.0\Algorithms.dll
+C:\Users\sandro_revazishvili\Desktop\code-maze-project\Algorithms\Algorithms\obj\Debug\net8.0\refint\Algorithms.dll
+C:\Users\sandro_revazishvili\Desktop\code-maze-project\Algorithms\Algorithms\obj\Debug\net8.0\Algorithms.pdb
+C:\Users\sandro_revazishvili\Desktop\code-maze-project\Algorithms\Algorithms\obj\Debug\net8.0\Algorithms.genruntimeconfig.cache
+C:\Users\sandro_revazishvili\Desktop\code-maze-project\Algorithms\Algorithms\obj\Debug\net8.0\ref\Algorithms.dll
