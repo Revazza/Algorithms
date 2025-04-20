@@ -1,25 +1,10 @@
-﻿using Algorithms.DataStructures;
-using Algorithms.DataStructures.Trees;
+﻿using Algorithms.Leetcode;
 
-var binarySearchTree = new BinarySearchTree();
-
-binarySearchTree.Insert(7);
-binarySearchTree.Insert(3);
-binarySearchTree.Insert(2);
-binarySearchTree.Insert(1);
-binarySearchTree.Insert(11);
-binarySearchTree.Insert(14);
-binarySearchTree.Insert(5);
-binarySearchTree.Insert(4);
-binarySearchTree.Insert(6);
-binarySearchTree.Insert(9);
-binarySearchTree.Insert(8);
-binarySearchTree.Insert(10);
-binarySearchTree.Insert(12);
-binarySearchTree.Insert(15);
-binarySearchTree.Insert(13);
-binarySearchTree.Display();
-
-var node = binarySearchTree.Find(14);
-binarySearchTree.FindRightMostMin(node);
-
+var problem = new MinimumAbsoluteDifferenceInBST();
+var head = new TreeNode(1);
+head.right = new TreeNode(2);
+head.right.right = new TreeNode(3);
+head.left = new TreeNode(4);
+head.left.left = new TreeNode(5);
+head.left.right = new TreeNode(6);
+problem.Solve(head);

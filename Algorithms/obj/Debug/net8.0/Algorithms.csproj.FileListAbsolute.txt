@@ -12,3 +12,4 @@ C:\Users\sandro_revazishvili\Desktop\code-maze-project\Algorithms\Algorithms\obj
 C:\Users\sandro_revazishvili\Desktop\code-maze-project\Algorithms\Algorithms\obj\Debug\net8.0\Algorithms.pdb
 C:\Users\sandro_revazishvili\Desktop\code-maze-project\Algorithms\Algorithms\obj\Debug\net8.0\Algorithms.genruntimeconfig.cache
 C:\Users\sandro_revazishvili\Desktop\code-maze-project\Algorithms\Algorithms\obj\Debug\net8.0\ref\Algorithms.dll
+C:\Users\sandro_revazishvili\Desktop\code-maze-project\Algorithms\Algorithms\obj\Debug\net8.0\Algorithms.sourcelink.json
