@@ -2,7 +2,7 @@ namespace Algorithms.DataStructures.Trees;
 
 public class BinaryTree
 {
-    private Node? Root { get; set; }
+    private TreeNode? Root { get; set; }
 
     /*
                    1
@@ -15,7 +15,11 @@ public class BinaryTree
 
     */
 
-    public void FindHeight(Node? node)
+    public TreeNode InvertTree(TreeNode root) {
+        
+    }
+
+    public void FindHeight(TreeNode? node)
     {
         if (node == null)
         {
@@ -38,32 +42,32 @@ public class BinaryTree
         Console.WriteLine("sum: " + sum);
     }
 
-    private int TiltRecursive(Node? node, ref int sum)
+    private int TiltRecursive(TreeNode? node, ref int sum)
     {
         if (node == null)
         {
             return 0;
         }
 
-        var leftValue = TiltRecursive(node.Left, ref sum);
-        var rightValue = TiltRecursive(node.Right, ref sum);
-        var currentValue = node.Value;
+        var leftValue = TiltRecursive(node.left, ref sum);
+        var rightValue = TiltRecursive(node.right, ref sum);
+        var currentValue = node.val;
 
-        node.Value = Math.Abs(leftValue - rightValue);
-        sum += node.Value;
+        node.val = Math.Abs(leftValue - rightValue);
+        sum += node.val;
 
         return leftValue + rightValue + currentValue;
     }
 
-    private int FindHeightRecursion(Node? node)
+    private int FindHeightRecursion(TreeNode? node)
     {
         if (node == null)
         {
             return -1;
         }
 
-        var leftHeight = FindHeightRecursion(node.Left);
-        var rightHeight = FindHeightRecursion(node.Right);
+        var leftHeight = FindHeightRecursion(node.left);
+        var rightHeight = FindHeightRecursion(node.right);
 
         return Math.Max(leftHeight, rightHeight) + 1;
     }
@@ -79,76 +83,76 @@ public class BinaryTree
         var nodeToDelete = FindWithBFS(value);
         var rightMostNodeValue = FindDeepestRightMostValueAndDelete();
 
-        nodeToDelete.Value = rightMostNodeValue;
+        nodeToDelete.val = rightMostNodeValue;
     }
 
     public void Insert(int value)
     {
         if (Root is null)
         {
-            Root = new Node(value);
+            Root = new TreeNode(value);
             return;
         }
 
-        var queue = new Queue<Node>();
+        var queue = new Queue<TreeNode>();
         queue.Enqueue(Root);
 
         while (queue.Count > 0)
         {
             var current = queue.Dequeue();
 
-            if (current.Left == null)
+            if (current.left == null)
             {
-                current.Left = new Node(value);
+                current.left = new TreeNode(value);
                 return;
             }
             else
             {
-                queue.Enqueue(current.Left);
+                queue.Enqueue(current.left);
             }
 
-            if (current.Right == null)
+            if (current.right == null)
             {
-                current.Right = new Node(value);
+                current.right = new TreeNode(value);
                 return;
             }
             else
             {
-                queue.Enqueue(current.Right);
+                queue.Enqueue(current.right);
             }
         }
     }
 
-    public Node? FindWithDFS(int value)
+    public TreeNode? FindWithDFS(int value)
     {
         if (Root == null)
         {
             return null;
         }
 
-        var stack = new Stack<Node>();
+        var stack = new Stack<TreeNode>();
         stack.Push(Root);
         Console.Write("Searching with DFS: ");
 
         while (stack.Count > 0)
         {
             var current = stack.Pop();
-            Console.Write($"{current.Value} -> ");
-            if (current.Value == value)
+            Console.Write($"{current.val} -> ");
+            if (current.val == value)
             {
                 Console.WriteLine();
                 Console.WriteLine($"Found value {value}");
                 return current;
             }
 
-            if (current.Right != null)
+            if (current.right != null)
             {
-                stack.Push(current.Right);
+                stack.Push(current.right);
             }
 
-            if (current.Left != null)
+            if (current.left != null)
             {
-                stack.Push(current.Left);
+                stack.Push(current.left);
             }
         }
 
@@ -156,34 +160,33 @@ public class BinaryTree
         return null;
     }
 
-    public Node? FindWithBFS(int value)
+    public TreeNode? FindWithBFS(int value)
     {
         if (Root == null)
         {
             return null;
         }
 
-        var queue = new Queue<Node>();
+        var queue = new Queue<TreeNode>();
         queue.Enqueue(Root);
 
         while (queue.Count > 0)
         {
             var current = queue.Dequeue();
-            Console.WriteLine($"Current value {current.Value}");
-            if (current.Value == value)
+            if (current.val == value)
             {
                 Console.WriteLine($"Found value {value}");
                 return current;
             }
 
-            if (current.Left != null)
+            if (current.left != null)
             {
-                queue.Enqueue(current.Left);
+                queue.Enqueue(current.left);
             }
 
-            if (current.Right != null)
+            if (current.right != null)
             {
-                queue.Enqueue(current.Right);
+                queue.Enqueue(current.right);
             }
         }
 
@@ -199,23 +202,23 @@ public class BinaryTree
         }
 
         var parent = Root;
-        var currentNode = Root.Right;
-        while (currentNode?.Right != null)
+        var currentNode = Root.right;
+        while (currentNode?.right != null)
         {
             parent = currentNode;
-            currentNode = currentNode.Right;
+            currentNode = currentNode.right;
         }
 
-        var value = currentNode?.Left?.Value ?? currentNode?.Value ?? -1;
+        var value = currentNode?.left?.val ?? currentNode?.val ?? -1;
 
-        if (currentNode!.Left != null)
+        if (currentNode!.left != null)
         {
             Console.WriteLine($"Deepest rightmost LEFT node value {value}");
-            currentNode.Left = null;
+            currentNode.left = null;
             return value;
         }
 
-        parent.Right = null;
+        parent.right = null;
         Console.WriteLine($"Deepest rightmost node value {value}");
 
         return value;
@@ -227,18 +230,18 @@ public class BinaryTree
         Root = null;
     }
 
-    private void RemoveAllNodes(Node? node)
+    private void RemoveAllNodes(TreeNode? node)
     {
         if (node == null)
         {
             return;
         }
 
-        RemoveAllNodes(node.Left);
-        RemoveAllNodes(node.Right);
+        RemoveAllNodes(node.left);
+        RemoveAllNodes(node.right);
 
-        node.Left = null;
-        node.Right = null;
+        node.left = null;
+        node.right = null;
     }
 
     public void DisplayPostOrder()
@@ -247,17 +250,17 @@ public class BinaryTree
         Console.WriteLine();
     }
 
-    private void DisplayPostOrder(Node? node)
+    private void DisplayPostOrder(TreeNode? node)
     {
         if (node == null)
         {
             return;
         }
 
-        DisplayPostOrder(node.Left);
-        DisplayPostOrder(node.Right);
+        DisplayPostOrder(node.left);
+        DisplayPostOrder(node.right);
 
-        Console.Write(node.Value + " ");
+        Console.Write(node.val + " ");
     }
 
     public void Display()
@@ -268,16 +271,16 @@ public class BinaryTree
             return;
         }
 
-        var queue = new Queue<Node>();
+        var queue = new Queue<TreeNode>();
         queue.Enqueue(Root);
 
         while (queue.Count > 0)
         {
             var current = queue.Dequeue();
-            Console.Write(current.Value + " ");
+            Console.Write(current.val + " ");
 
-            if (current.Left != null) queue.Enqueue(current.Left);
-            if (current.Right != null) queue.Enqueue(current.Right);
+            if (current.left != null) queue.Enqueue(current.left);
+            if (current.right != null) queue.Enqueue(current.right);
         }
 
         Console.WriteLine();
@@ -296,17 +299,17 @@ public class BinaryTree
         Insert(9);
     }
 
-    public class Node
+    public class TreeNode
     {
-        public int Value { get; set; }
-        public Node? Left { get; set; }
-        public Node? Right { get; set; }
+        public int val { get; set; }
+        public TreeNode? left { get; set; }
+        public TreeNode? right { get; set; }
 
-        public Node(int value, Node? left = null, Node? right = null)
+        public TreeNode(int val, TreeNode? left = null, TreeNode? right = null)
         {
-            Value = value;
-            Left = left;
-            Right = right;
+            this.val = val;
+            this.left = left;
+            this.right = right;
         }
     }
 }
