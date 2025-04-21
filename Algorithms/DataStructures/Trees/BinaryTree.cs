@@ -15,6 +15,59 @@ public class BinaryTree
 
     */
 
+    public void FindHeight(Node? node)
+    {
+        if (node == null)
+        {
+            return;
+        }
+
+        var height = FindHeightRecursion(node);
+        Console.WriteLine("Height: " + height);
+    }
+
+    public void Tilt()
+    {
+        if (Root == null)
+        {
+            return;
+        }
+
+        var sum = 0;
+        TiltRecursive(Root, ref sum);
+        Console.WriteLine("sum: " + sum);
+    }
+
+    private int TiltRecursive(Node? node, ref int sum)
+    {
+        if (node == null)
+        {
+            return 0;
+        }
+
+        var leftValue = TiltRecursive(node.Left, ref sum);
+        var rightValue = TiltRecursive(node.Right, ref sum);
+        var currentValue = node.Value;
+
+        node.Value = Math.Abs(leftValue - rightValue);
+        sum += node.Value;
+
+        return leftValue + rightValue + currentValue;
+    }
+
+    private int FindHeightRecursion(Node? node)
+    {
+        if (node == null)
+        {
+            return -1;
+        }
+
+        var leftHeight = FindHeightRecursion(node.Left);
+        var rightHeight = FindHeightRecursion(node.Right);
+
+        return Math.Max(leftHeight, rightHeight) + 1;
+    }
+
     public void Remove(int value)
     {
         if (Root == null)
@@ -28,7 +81,7 @@ public class BinaryTree
 
         nodeToDelete.Value = rightMostNodeValue;
     }
-    
+
     public void Insert(int value)
     {
         if (Root is null)
@@ -92,7 +145,7 @@ public class BinaryTree
             {
                 stack.Push(current.Right);
             }
-            
+
             if (current.Left != null)
             {
                 stack.Push(current.Left);
@@ -127,7 +180,7 @@ public class BinaryTree
             {
                 queue.Enqueue(current.Left);
             }
-            
+
             if (current.Right != null)
             {
                 queue.Enqueue(current.Right);
@@ -154,14 +207,14 @@ public class BinaryTree
         }
 
         var value = currentNode?.Left?.Value ?? currentNode?.Value ?? -1;
-        
+
         if (currentNode!.Left != null)
         {
             Console.WriteLine($"Deepest rightmost LEFT node value {value}");
             currentNode.Left = null;
             return value;
         }
-        
+
         parent.Right = null;
         Console.WriteLine($"Deepest rightmost node value {value}");
 
@@ -180,7 +233,7 @@ public class BinaryTree
         {
             return;
         }
-        
+
         RemoveAllNodes(node.Left);
         RemoveAllNodes(node.Right);
 
@@ -193,20 +246,20 @@ public class BinaryTree
         DisplayPostOrder(Root);
         Console.WriteLine();
     }
-    
+
     private void DisplayPostOrder(Node? node)
     {
         if (node == null)
         {
             return;
         }
-        
+
         DisplayPostOrder(node.Left);
         DisplayPostOrder(node.Right);
 
         Console.Write(node.Value + " ");
     }
-    
+
     public void Display()
     {
         if (Root == null)
@@ -242,7 +295,7 @@ public class BinaryTree
         Insert(8);
         Insert(9);
     }
-    
+
     public class Node
     {
         public int Value { get; set; }
