@@ -1,23 +1,25 @@
+using Algorithms.Leetcode;
+
 namespace Algorithms.DataStructures.Trees;
 
 public class BinarySearchTree
 {
-    private Node? Root { get; set; }
+    public TreeNode? Root { get; set; }
 
     public void Insert(int value)
     {
         if (Root == null)
         {
-            Root = new Node(value);
+            Root = new TreeNode(value);
             return;
         }
 
         InsertRecursively(value, Root);
     }
 
-    public Node? Find(int value)
+    public TreeNode? Find(int value)
     {
-        if (Root == null || Root.Value == value)
+        if (Root == null || Root.val == value)
         {
             return Root;
         }
@@ -25,49 +27,49 @@ public class BinarySearchTree
         return FindAndPrint(value, Root);
     }
 
-    public Node? FindRightMostMin(Node? node)
+    public TreeNode? FindRightMostMin(TreeNode? node)
     {
         if (node == null)
         {
             return null;
         }
 
-        Console.Write($"From node with {node.Value},");
+        Console.Write($"From node with {node.val},");
         
         while (node != null)
         {
-            if (node.Left == null)
+            if (node.left == null)
             {
-                Console.Write($"min is {node.Value}");
+                Console.Write($"min is {node.val}");
                 Console.WriteLine();
                 return node;
             }
 
-            node = node.Left;
+            node = node.left;
         }
 
         Console.WriteLine("min value is node itself");
         return null;
     }
 
-    public Node? Delete(int value, Node? node)
+    public TreeNode? Delete(int value, TreeNode? node)
     {
         if (node is null)
         {
             return null;
         }
 
-        if (value > node.Value)
+        if (value > node.val)
         {
-            node.Right = Delete(value, node.Right);
+            node.right = Delete(value, node.right);
         }
-        else if (value < node.Value)
+        else if (value < node.val)
         {
-            node.Left = Delete(value, node.Left);
+            node.left = Delete(value, node.left);
         }
         else
         {
-            if (node.Left == null && node.Right == null)
+            if (node.left == null && node.right == null)
             {
                 
             }
@@ -83,54 +85,54 @@ public class BinarySearchTree
             return;
         }
 
-        var queue = new Queue<Node>();
+        var queue = new Queue<TreeNode>();
         queue.Enqueue(Root);
 
         while (queue.Count > 0)
         {
             var current = queue.Dequeue();
-            Console.Write($"{current.Value} -> ");
+            Console.Write($"{current.val} -> ");
 
-            if (current.Left != null)
+            if (current.left != null)
             {
-                queue.Enqueue(current.Left);
+                queue.Enqueue(current.left);
             }
 
-            if (current.Right != null)
+            if (current.right != null)
             {
-                queue.Enqueue(current.Right);
+                queue.Enqueue(current.right);
             }
         }
 
         Console.WriteLine();
     }
 
-    private Node? InsertRecursively(int value, Node? node)
+    private TreeNode? InsertRecursively(int value, TreeNode? node)
     {
         if (node == null)
         {
-            return new Node(value);
+            return new TreeNode(value);
         }
 
-        if (node.Value == value)
+        if (node.val == value)
         {
             return null;
         }
 
-        if (value > node.Value)
+        if (value > node.val)
         {
-            node.Right = InsertRecursively(value, node.Right);
+            node.right = InsertRecursively(value, node.right);
         }
-        else if (value < node.Value)
+        else if (value < node.val)
         {
-            node.Left = InsertRecursively(value, node.Left);
+            node.left = InsertRecursively(value, node.left);
         }
 
         return node;
     }
     
     
-    private Node? FindAndPrint(int value, Node? node)
+    private TreeNode? FindAndPrint(int value, TreeNode? node)
     {
         while (true)
         {
@@ -139,22 +141,22 @@ public class BinarySearchTree
                 return null;
             }
 
-            if (node.Value == value)
+            if (node.val == value)
             {
                 Console.WriteLine($"Found value {value}");
                 return node;
             }
 
-            Console.Write($"{node.Value} -> ");
-            if (value > node.Value)
+            Console.Write($"{node.val} -> ");
+            if (value > node.val)
             {
-                node = node.Right;
+                node = node.right;
                 continue;
             }
 
-            if (value < node.Value)
+            if (value < node.val)
             {
-                node = node.Left;
+                node = node.left;
                 continue;
             }
 
@@ -162,17 +164,4 @@ public class BinarySearchTree
         }
     }
 
-    public class Node
-    {
-        public int Value { get; set; }
-        public Node? Left { get; set; }
-        public Node? Right { get; set; }
-
-        public Node(int value, Node? right = null, Node? left = null)
-        {
-            Right = right;
-            Left = left;
-            Value = value;
-        }
-    }
 }

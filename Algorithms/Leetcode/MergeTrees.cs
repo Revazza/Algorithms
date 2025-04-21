@@ -2,7 +2,7 @@ namespace Algorithms.Leetcode;
 
 public class MergeTrees
 {
-    public TreeNode MergeTrees(TreeNode root1, TreeNode root2)
+    public TreeNode Solve(TreeNode root1, TreeNode root2)
     {
         if (root1 == null && root2 == null)
         {
