@@ -4,15 +4,6 @@ public class MajorityElement
 {
     public int Solve(int[] nums)
     {
-        // Example 1:
-        //
-        // Input: nums = [3,2,3]
-        // Output: 3
-        // Example 2:
-        //
-        // Input: nums = [2,2,1,1,1,2,2]
-        // Output: 2
-
         if (nums.Length == 0)
         {
             return -1;
@@ -39,4 +30,22 @@ public class MajorityElement
 
         return nums[0];
     }
+
+// Elegant solution (Moore Algorithm)
+//     int count = 0;
+//     int candidate = 0;
+//         
+//         for (int num : nums) {
+//         if (count == 0) {
+//             candidate = num;
+//         }
+//             
+//         if (num == candidate) {
+//             count++;
+//         } else {
+//             count--;
+//         }
+//     }
+//         
+//     return candidate;
 }
