@@ -168,9 +168,52 @@ public class BinaryTree
         return value;
     }
 
+    public void RemoveAllNodes()
+    {
+        RemoveAllNodes(Root);
+        Root = null;
+    }
+
+    private void RemoveAllNodes(Node? node)
+    {
+        if (node == null)
+        {
+            return;
+        }
+        
+        RemoveAllNodes(node.Left);
+        RemoveAllNodes(node.Right);
+
+        node.Left = null;
+        node.Right = null;
+    }
+
+    public void DisplayPostOrder()
+    {
+        DisplayPostOrder(Root);
+        Console.WriteLine();
+    }
+    
+    private void DisplayPostOrder(Node? node)
+    {
+        if (node == null)
+        {
+            return;
+        }
+        
+        DisplayPostOrder(node.Left);
+        DisplayPostOrder(node.Right);
+
+        Console.Write(node.Value + " ");
+    }
+    
     public void Display()
     {
-        if (Root == null) return;
+        if (Root == null)
+        {
+            Console.WriteLine("Tree is empty");
+            return;
+        }
 
         var queue = new Queue<Node>();
         queue.Enqueue(Root);
@@ -185,6 +228,19 @@ public class BinaryTree
         }
 
         Console.WriteLine();
+    }
+
+    public void Initialize()
+    {
+        Insert(1);
+        Insert(2);
+        Insert(3);
+        Insert(4);
+        Insert(5);
+        Insert(6);
+        Insert(7);
+        Insert(8);
+        Insert(9);
     }
     
     public class Node
