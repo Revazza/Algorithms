@@ -2,7 +2,7 @@ namespace Algorithms.DataStructures.Trees;
 
 public class BinaryTree
 {
-    private TreeNode? Root { get; set; }
+    public TreeNode? Root { get; set; }
 
     /*
                    1
@@ -14,10 +14,6 @@ public class BinaryTree
           8   9
 
     */
-
-    public TreeNode InvertTree(TreeNode root) {
-        
-    }
 
     public void FindHeight(TreeNode? node)
     {

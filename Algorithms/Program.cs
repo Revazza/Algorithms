@@ -2,16 +2,15 @@
 
 var binaryTree = new BinaryTree();
 binaryTree.Insert(1);
-binaryTree.Insert(1);
+binaryTree.Insert(2);
+binaryTree.Insert(2);
+binaryTree.Insert(3);
+binaryTree.Insert(4);
+binaryTree.Insert(4);
+binaryTree.Insert(3);
 binaryTree.Display();
 
-var subTree = new BinaryTree();
-subTree.Insert(1);
+var copy = binaryTree.Copy();
 
-subTree.Display();
-
-var ans = binaryTree.IsSubtree(binaryTree.FindWithBFS(1), subTree.FindWithBFS(1));
-
-Console.WriteLine(ans);
-
+copy.Display();
 
