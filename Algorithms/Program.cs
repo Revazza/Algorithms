@@ -1,7 +1,5 @@
 ﻿using Algorithms.DataStructures.Arrays;
+using Algorithms.Extensions;
 
-var problem = new ContainsDuplicateSecond();
-
-Console.WriteLine(problem.Solve([1, 2, 3, 1, 2, 3]));
-Console.WriteLine(problem.Solve([1, 2, 3, 1]));
-Console.WriteLine(problem.Solve([1, 0, 1, 1]));
+var problem = new MissingNumber();
+Console.WriteLine(problem.Solve([9,6,4,2,3,5,7,0,1]));
