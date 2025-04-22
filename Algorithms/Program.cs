@@ -1,11 +1,9 @@
 ﻿using Algorithms.DataStructures.Arrays;
 using Algorithms.Extensions;
 
-var problem = new MoveZeroes();
-var arr = new int[] { 0, 1, 0, 3, 12 };
-arr.Display();
+var problem = new ThreeSum();
+problem.Solve([-2, 0, 1, 1, 2]).DisplayTwoDimension();
 
-problem.Solve(arr);
-arr.Display();
 
-Console.WriteLine();
+problem.Solve([-1, 0, 1, 2, -1, -4]).DisplayTwoDimension();
+problem.Solve([-4, -1, -1, 0, 1, 2]).DisplayTwoDimension();

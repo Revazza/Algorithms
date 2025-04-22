@@ -12,4 +12,21 @@ public static class EnumerableExtensions
         Console.Write("]");
         Console.WriteLine();
     }
+    
+    public static void DisplayTwoDimension<T>(this IEnumerable<IEnumerable<T>> enumerable)
+    {
+        foreach (var innerEnumerable in enumerable)
+        {
+            Console.Write("[");
+            foreach (var innerValue in innerEnumerable)
+            {
+                Console.Write($"{innerValue}, ");
+            }
+            Console.Write("]");
+            Console.WriteLine();
+        }
+        
+
+        Console.WriteLine();
+    }
 }
