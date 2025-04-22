@@ -6,10 +6,11 @@ public class ThreeSum
     {
         var i = 0;
         var j = 1;
-        var k = 2;
+        var left = 2;
+        var right = nums.Length - 1;
 
-        // -4, -1, -1, 0, 1, 2
-        
+        // -1, 0, 1, 2, -1, -4, 2, 3, -1
+
         var dict = new Dictionary<int, int>();
         var triplets = new List<IList<int>>();
 
@@ -17,30 +18,31 @@ public class ThreeSum
         {
             i = index;
             j = index + 1;
-            k = index + 2;
+            left = index + 2;
+            right = nums.Length - 1;
 
             while (i < nums.Length - 2)
             {
-                var sum = nums[i] + nums[j] + nums[k];
+                var sum = nums[i] + nums[j] + nums[left];
 
                 if (sum == 0)
                 {
-                    InsertTriplet(dict, triplets,[nums[i], nums[j], nums[k]]);
+                    InsertTriplet(dict, triplets, [nums[i], nums[j], nums[left]]);
                 }
 
-                k++;
+                left++;
 
-                if (k > nums.Length - 1)
+                if (left > nums.Length - 1)
                 {
                     j++;
-                    k = j + 1;
+                    left = j + 1;
                 }
 
                 if (j > nums.Length - 2)
                 {
                     i++;
                     j = i + 1;
-                    k = i + 2;
+                    left = i + 2;
                 }
             }
         }
