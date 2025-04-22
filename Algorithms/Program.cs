@@ -1,10 +1,7 @@
 ﻿using Algorithms.DataStructures.Arrays;
-using Algorithms.DataStructures.Trees;
-using Algorithms.Leetcode;
 
-var problem = new MajorityElement();
+var problem = new ContainsDuplicateSecond();
 
-Console.WriteLine(problem.Solve([2,2,1,1,1,2,2]));
-
-
-
+Console.WriteLine(problem.Solve([1, 2, 3, 1, 2, 3]));
+Console.WriteLine(problem.Solve([1, 2, 3, 1]));
+Console.WriteLine(problem.Solve([1, 0, 1, 1]));
