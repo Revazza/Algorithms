@@ -1,8 +1,30 @@
-namespace Algorithms.DataStructures;
+namespace Algorithms.DataStructures.LinkedLists;
 
 public class SinglyLinkedList
 {
     public Node? Head { get; set; }
+
+
+    public void Reverse()
+    {
+        if (Head is null)
+        {
+            return;
+        }
+
+        Node? newHead = null;
+        var curr = Head;
+        
+        while (curr != null)
+        {
+            var temp = curr.Next;
+            curr.Next = newHead;
+            newHead = curr;
+            curr = temp;
+        }
+
+        Head = newHead;
+    }
 
     public void Insert(int value)
     {
@@ -135,6 +157,17 @@ public class SinglyLinkedList
         }
 
         return (previousNode, nodeToDelete);
+    }
+
+    public void Initialize()
+    {
+        Insert(1);
+        Insert(2);
+        Insert(3);
+        Insert(4);
+        Insert(5);
+        Insert(6);
+        Insert(7);
     }
     
     public class Node
