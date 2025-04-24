@@ -1,7 +1,10 @@
 ﻿using Algorithms;
 using Algorithms.DataStructures.Arrays;
 using Algorithms.DataStructures.LinkedLists;
+using Algorithms.DataStructures.Strings;
 
-var problem = new TwoSum();
+var problem = new PalindromicSubstrings();
 
-problem.Solve([2, 3, 4, 7, 11],5);
+// Console.WriteLine(problem.Solve("ab"));
+Console.WriteLine(problem.Solve("abc"));
+// Console.WriteLine(problem.Solve("aaa"));
