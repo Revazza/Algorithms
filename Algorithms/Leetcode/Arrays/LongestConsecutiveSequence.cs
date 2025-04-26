@@ -9,10 +9,7 @@ public class LongestConsecutiveSequence
         var seq = 0;
         foreach (var num in hashSet)
         {
-            if (hashSet.Contains(num - 1))
-            {
-                continue;
-            }
+            if (hashSet.Contains(num - 1)) continue;
 
             var start = num;
             var count = 1;
@@ -30,7 +27,7 @@ public class LongestConsecutiveSequence
 
             seq = Math.Max(seq, count);
         }
-        
+
         return seq;
     }
 }

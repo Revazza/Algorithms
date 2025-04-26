@@ -14,7 +14,7 @@ public class ThreeSum
         var dict = new Dictionary<int, int>();
         var triplets = new List<IList<int>>();
 
-        for (int index = 0; i < nums.Length - 2; index++)
+        for (var index = 0; i < nums.Length - 2; index++)
         {
             i = index;
             j = index + 1;
@@ -25,10 +25,7 @@ public class ThreeSum
             {
                 var sum = nums[i] + nums[j] + nums[left];
 
-                if (sum == 0)
-                {
-                    InsertTriplet(dict, triplets, [nums[i], nums[j], nums[left]]);
-                }
+                if (sum == 0) InsertTriplet(dict, triplets, [nums[i], nums[j], nums[left]]);
 
                 left++;
 
@@ -53,10 +50,7 @@ public class ThreeSum
     private void InsertTriplet(Dictionary<int, int> dict, List<IList<int>> triplets, int[] triplet)
     {
         var hash = GetTripletHash(triplet);
-        if (dict.TryAdd(hash, hash))
-        {
-            triplets.Add(triplet);
-        }
+        if (dict.TryAdd(hash, hash)) triplets.Add(triplet);
     }
 
     public static int GetTripletHash(int[] triplet)

@@ -6,11 +6,9 @@ public class ContainsDuplicateSecond
     {
         var dict = new Dictionary<int, int>();
 
-        for (int i = 0; i < nums.Length; i++)
+        for (var i = 0; i < nums.Length; i++)
         {
-            if(dict.ContainsKey(nums[i]) && Math.Abs(dict[nums[i]] - i) <= k){
-                return true;
-            }
+            if (dict.ContainsKey(nums[i]) && Math.Abs(dict[nums[i]] - i) <= k) return true;
 
             dict[nums[i]] = i;
         }

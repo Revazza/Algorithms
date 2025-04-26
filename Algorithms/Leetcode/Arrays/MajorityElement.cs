@@ -4,21 +4,14 @@ public class MajorityElement
 {
     public int Solve(int[] nums)
     {
-        if (nums.Length == 0)
-        {
-            return -1;
-        }
+        if (nums.Length == 0) return -1;
 
         var dict = new Dictionary<int, int>();
         var majorityCount = nums.Length / 2;
-        for (int i = 0; i < nums.Length; i++)
-        {
-            if (dict.TryGetValue(nums[i], out int value))
+        for (var i = 0; i < nums.Length; i++)
+            if (dict.TryGetValue(nums[i], out var value))
             {
-                if (++value > majorityCount)
-                {
-                    return nums[i];
-                }
+                if (++value > majorityCount) return nums[i];
 
                 dict[nums[i]] = value;
             }
@@ -26,7 +19,6 @@ public class MajorityElement
             {
                 dict[nums[i]] = 1;
             }
-        }
 
         return nums[0];
     }

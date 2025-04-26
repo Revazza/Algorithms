@@ -12,21 +12,12 @@ public class IntersectOfTwoArrays
         while (true)
         {
             var num1 = -1;
-            if (i < nums1.Length)
-            {
-                num1 = nums1[i];
-            }
+            if (i < nums1.Length) num1 = nums1[i];
 
             var num2 = -1;
-            if (j < nums2.Length)
-            {
-                num2 = nums2[j];
-            }
-            
-            
-            
+            if (j < nums2.Length) num2 = nums2[j];
         }
-        
+
         return list.ToArray();
     }
 }

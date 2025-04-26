@@ -22,11 +22,8 @@ public class SummaryRanges
         // [6,6] --> "6"
         // [8,9] --> "8->9"
 
-        if (nums.Length == 0)
-        {
-            return [];
-        }
-        
+        if (nums.Length == 0) return [];
+
         var list = new List<string>();
 
         // 0, 2, 3, 4, 6, 8, 9, 10, 12
@@ -57,15 +54,9 @@ public class SummaryRanges
             counter = 0;
         }
 
-        if (counter > 0)
-        {
-            list.Add($"{tail}->{nums[^1]}");
-        }
+        if (counter > 0) list.Add($"{tail}->{nums[^1]}");
 
-        if (nums[^1] == tail)
-        {
-            list.Add(tail.ToString());
-        }
+        if (nums[^1] == tail) list.Add(tail.ToString());
 
         return list;
     }

@@ -7,17 +7,19 @@ public class TwoSum
         var low = 0;
         var missing = new List<int>();
 
-        for(int i = 0; i < arr.Length; i++){
+        for (var i = 0; i < arr.Length; i++)
+        {
             var high = arr[i];
-            if( low + 1 == high){
+            if (low + 1 == high)
+            {
                 low = high;
                 continue;
             }
-            while(low + 1 < high){
+
+            while (low + 1 < high)
+            {
                 missing.Add(++low);
-                if(k == missing.Count){
-                    return missing.Last();
-                }
+                if (k == missing.Count) return missing.Last();
             }
 
             low = high;
@@ -25,9 +27,7 @@ public class TwoSum
 
         var sub = k - missing.Count;
         var ans = arr[arr.Length - 1];
-        for(int i = 0;i < sub;i++){
-            ans++;
-        }
+        for (var i = 0; i < sub; i++) ans++;
         return ans;
 
         return -1;
