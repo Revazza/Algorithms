@@ -1,43 +1,29 @@
 namespace Algorithms.Leetcode.Arrays;
 
 public class LongestIncreasingSubsequence
-{
+{   
     public int Solve(int[] nums)
     {
-        var ans = int.MinValue;
-        var stack = new Stack<int>();
+        // 10,9,2,5,3,7,101,18
 
-        for (int i = 0; i < nums.Length; i++)
+        var dict = new Dictionary<int, int>();
+        for (var i = nums.Length - 1; i >= 0; i--)
         {
-            stack.Push(nums[i]);
-            var count = CountMaxLength(i, stack, nums);
-            ans = int.Max(ans, count);
-            stack.Pop();
-        }
-
-        return ans;
-    }
-
-    private int CountMaxLength(
-        int index,
-        Stack<int> stack,
-        int[] nums)
-    {
-        var max = stack.Count;
-
-        for (int i = index + 1; i < nums.Length; i++)
-        {
-            if (nums[i] <= nums[index])
+            var count = 0;
+            for (var k = i; k < nums.Length; k++)
             {
-                continue;
+                if (nums[i] >= nums[k])
+                {
+                    continue;
+                }
+
+                count = int.Max(count, dict[k]);
             }
 
-            stack.Push(nums[i]);
-            var count = CountMaxLength(i, stack, nums);
-            max = Math.Max(max, count);
-            stack.Pop();
+            Console.WriteLine($"{nums[i]} - {count + 1}");
+            dict[i] = int.Max(1, count + 1);
         }
-
-        return max;
+        
+        return dict.Max(x => x.Value);
     }
 }
