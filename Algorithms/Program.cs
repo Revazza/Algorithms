@@ -1,4 +1,4 @@
 ﻿using Algorithms.Leetcode.Arrays;
 
-var ok = "A man, a plan, a canal: Panama";
-
+var problem = new MergeIntervals();
+problem.Merge([[1, 4], [0, 2], [3, 5]]);
