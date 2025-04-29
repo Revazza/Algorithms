@@ -7,4 +7,3 @@ Console.WriteLine(problem.Solve([1, 2, 5], 11));
 var dp = new Dictionary<int, int>();
 var ok = dp.Last().Value;
 Console.WriteLine();
-"".ToList()

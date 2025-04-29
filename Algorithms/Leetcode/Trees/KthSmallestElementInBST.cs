@@ -4,29 +4,29 @@ public class KthSmallestElementInBST
 {
     public int KthSmallest(TreeNode root, int k)
     {
-        var ok = InOrderRecursive(root, k);
-        return 0;
+        var list = new List<int>();
+        InOrderRecursive(root, list);
+
+        return list[k - 1];
     }
 
-    private int InOrderRecursive(TreeNode node, int k)
+    private void InOrderRecursive(TreeNode node, List<int> list)
     {
         if (node == null)
         {
-            return 0;
+            return;
         }
 
-        var left = InOrderRecursive(node.left, k);
-        if (left == k)
+        if (node.left != null)
         {
-            return node.left.val;
+            InOrderRecursive(node.left, list);
         }
 
-        var right = InOrderRecursive(node.right, k);
-        if (right == k)
+        list.Add(node.val);
+
+        if (node.right != null)
         {
-            return node.right.val;
+            InOrderRecursive(node.right, list);
         }
-
-        return 1;
     }
 }
