@@ -2,31 +2,32 @@ namespace Algorithms.Leetcode;
 
 public class ValidateBinarySearchTree
 {
-    public bool IsValidBST(TreeNode root) {
-        var list = new List<int>();
-        InOrderTraversal(root, list);
-        for(int i = 0;i < list.Count - 1; i++){
-            if(list[i] > list[i + 1]){
-                return false;
-            }
-        }
-
-        return true;
+    public bool IsValidBST(TreeNode root)
+    {
+        return IsValidBST(root, long.MinValue, long.MaxValue);
     }
 
-    private void InOrderTraversal(TreeNode root, List<int> list){
-        if(root == null){
-            return;
+    private bool IsValidBST(TreeNode node, long minimum, long maximum)
+    {
+        if (node == null)
+        {
+            return true;
         }
 
-        if(root.left != null){
-            InOrderTraversal(root.left, list);
+        if (!(node.val > minimum && node.val < maximum))
+        {
+            return false;
         }
 
-        list.Add(root.val);
-
-        if(root.right != null){
-            InOrderTraversal(root.right, list);
+        var ok = new Queue<int>();
+        ok.Enqueue(1);
+        while (ok.Count != 0)
+        {
+            ok.Dequeue();
+            
         }
-    } 
+
+        return IsValidBST(node.left, minimum, node.val) &&
+               IsValidBST(node.right, node.val, maximum);
+    }
 }
