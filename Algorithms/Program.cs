@@ -1,6 +1,9 @@
-﻿using Algorithms.Leetcode.Arrays;
+﻿using Algorithms.DataStructures.Graphs;
+using Algorithms.DataStructures.Trees;
+using Algorithms.Leetcode;
+using Algorithms.Leetcode.Arrays;
 
-var problem = new ProductOfArrayExceptSelf();
 
-problem.ProductExceptSelf([2, 3, 6, 2]);
-
+var tree = new BinaryTree();
+tree.Initialize();
+tree.DisplayLevelOrder();

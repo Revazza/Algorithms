@@ -282,6 +282,45 @@ public class BinaryTree
         Console.WriteLine();
     }
 
+    public void DisplayLevelOrder()
+    {
+        if (Root == null)
+        {
+            return;
+        }
+
+        var q = new Queue<TreeNode>();
+        q.Enqueue(Root);
+
+        while (q.Count != 0)
+        {
+            var count = q.Count;
+            var counter = 0;
+
+            while (counter < count)
+            {
+                var current = q.Dequeue();
+                Console.Write($"{current.val} ");
+                if (current.left != null)
+                {
+                    q.Enqueue(current.left);
+                }
+
+                if (current.right != null)
+                {
+                    q.Enqueue(current.right);
+                }
+
+                counter++;
+            }
+
+            Console.WriteLine();
+        
+        }
+
+        return;
+    }
+
     public void Initialize()
     {
         Insert(1);
