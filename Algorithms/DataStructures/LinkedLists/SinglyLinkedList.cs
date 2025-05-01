@@ -1,8 +1,10 @@
+using Algorithms.Leetcode;
+
 namespace Algorithms.DataStructures.LinkedLists;
 
 public class SinglyLinkedList
 {
-    public Node? Head { get; set; }
+    public ListNode? Head { get; set; }
 
 
     public void Reverse()
@@ -12,18 +14,26 @@ public class SinglyLinkedList
             return;
         }
 
-        Node? newHead = null;
+        ListNode? newHead = null;
         var curr = Head;
         
         while (curr != null)
         {
-            var temp = curr.Next;
-            curr.Next = newHead;
+            var temp = curr.next;
+            curr.next = newHead;
             newHead = curr;
             curr = temp;
         }
 
         Head = newHead;
+    }
+
+    public void InsertRange(IEnumerable<int> values)
+    {
+        foreach (var value in values)
+        {
+            Insert(value);
+        }
     }
 
     public void Insert(int value)
@@ -32,11 +42,11 @@ public class SinglyLinkedList
 
         if (lastNode == null) // O(1)
         {
-            Head = new Node(value);
+            Head = new ListNode(value);
             return;
         }
 
-        lastNode.Next = new Node(value);
+        lastNode.next = new ListNode(value);
     }
 
     public void Insert(int value, int position)
@@ -45,20 +55,20 @@ public class SinglyLinkedList
         {
             if (Head is null)
             {
-                Head = new Node(value);
+                Head = new ListNode(value);
             }
             else
             {
                 // When adding at first position
-                var newNode = new Node(value);
-                newNode.Next = Head;
+                var newNode = new ListNode(value);
+                newNode.next = Head;
                 Head = newNode;
             }
             return;
         }
         
         var tail = Head;
-        var current = Head?.Next;
+        var current = Head?.next;
         var currentPosition = 1;
 
         while (currentPosition != position)
@@ -66,7 +76,7 @@ public class SinglyLinkedList
             // When adding at last position
             if (current == null && currentPosition + 1 == position)
             {
-                tail!.Next = new Node(value);
+                tail!.next = new ListNode(value);
                 return;
             }
             if (current == null)
@@ -76,19 +86,19 @@ public class SinglyLinkedList
             }
 
             tail = current;
-            current = current.Next;
+            current = current.next;
             currentPosition++;
         }
 
         // When adding at somewhere middle
-        tail!.Next = new Node(value);
-        tail.Next.Next = current;
+        tail!.next = new ListNode(value);
+        tail.next.next = current;
     }
 
 
     public void Delete(int value)
     {
-        (Node? Previous, Node? NodeToDelete) = FindPreviousAndNodeToDelete(value);
+        (ListNode Previous, ListNode NodeToDelete) = FindPreviousAndNodeToDelete(value);
 
         if (Previous is null && NodeToDelete is null)
         {
@@ -98,17 +108,17 @@ public class SinglyLinkedList
 
         if (Previous is null && NodeToDelete is not null)
         {
-            Head = Head!.Next;
+            Head = Head!.next;
             Console.WriteLine($"Deleted head with value {value}");
             return;
         }
 
-        Previous!.Next = NodeToDelete!.Next;
+        Previous!.next = NodeToDelete!.next;
         Console.WriteLine($"Deleted node with value {value}");
         return;
     }
 
-    public Node? FindLast()
+    public ListNode? FindLast()
     {
         if (Head is null) // O(1)
         {
@@ -116,9 +126,9 @@ public class SinglyLinkedList
         }
         
         var currentNode = Head;
-        while (currentNode.Next != null) // O(n) where n is the size of linked list
+        while (currentNode.next != null) // O(n) where n is the size of linked list
         {
-            currentNode = currentNode.Next;
+            currentNode = currentNode.next;
         }
 
         return currentNode;
@@ -129,31 +139,31 @@ public class SinglyLinkedList
         var currentNode = Head;
         while (currentNode != null)
         {
-            Console.Write(currentNode.Value + " -> ");
-            currentNode = currentNode.Next;
+            Console.Write(currentNode.val + " -> ");
+            currentNode = currentNode.next;
         }
 
         Console.WriteLine();
     }
     
-    private (Node? Previous, Node? NodeToDelete) FindPreviousAndNodeToDelete(int value)
+    private (ListNode? Previous, ListNode? NodeToDelete) FindPreviousAndNodeToDelete(int value)
     {
         if (Head is null)
         {
             return (null,null);
         }
 
-        if (Head.Value == value)
+        if (Head.val == value)
         {
             return (null, Head);
         }
 
         var previousNode = Head;
-        var nodeToDelete = Head.Next;
-        while (nodeToDelete is not null && nodeToDelete.Value != value)
+        var nodeToDelete = Head.next;
+        while (nodeToDelete is not null && nodeToDelete.val != value)
         {
             previousNode = nodeToDelete;
-            nodeToDelete = nodeToDelete.Next;
+            nodeToDelete = nodeToDelete.next;
         }
 
         return (previousNode, nodeToDelete);
@@ -168,17 +178,5 @@ public class SinglyLinkedList
         Insert(5);
         Insert(6);
         Insert(7);
-    }
-    
-    public class Node
-    {
-        public int Value { get; set; }
-        public Node? Next { get; set; }
-
-        public Node(int value, Node? next = null)
-        {
-            Value = value;
-            Next = next;
-        }
     }
 }
