@@ -7,12 +7,6 @@ using Algorithms.Leetcode.LinkedLists;
 using Microsoft.CSharp.RuntimeBinder;
 
 
-var l1 = new SinglyLinkedList();
-l1.InsertRange([1, 4, 5]);
+var problem = new DiagonalTraverse();
 
-var l2 = new SinglyLinkedList();
-l2.InsertRange([0, 2]);
-
-var problem = new MergeKSortedLists();
-
-problem.MergeKLists([l1.Head, l2.Head]);
+problem.FindDiagonalOrder([[1, 2, 3], [4, 5, 6], [7, 8, 9]]);
