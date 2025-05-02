@@ -4,53 +4,48 @@ public class ThreeSum
 {
     public IList<IList<int>> Solve(int[] nums)
     {
-        var i = 0;
-        var j = 1;
-        var left = 2;
-        var right = nums.Length - 1;
+        var triplets = new Dictionary<int, int[]>();
+        Array.Sort(nums);
 
-        // -1, 0, 1, 2, -1, -4, 2, 3, -1
+        // -1, 0, 1, 2, -1, -4
+        // -4 -1 -1 0 1 2  
 
-        var dict = new Dictionary<int, int>();
-        var triplets = new List<IList<int>>();
-
-        for (var index = 0; i < nums.Length - 2; index++)
+        for (int i = 0; i < nums.Length - 2; i++)
         {
-            i = index;
-            j = index + 1;
-            left = index + 2;
-            right = nums.Length - 1;
+            var left = i + 1;
+            var right = nums.Length - 1;
 
-            while (i < nums.Length - 2)
+            while (left < right)
             {
-                var sum = nums[i] + nums[j] + nums[left];
+                var sum = nums[i] + nums[left] + nums[right];
 
-                if (sum == 0) InsertTriplet(dict, triplets, [nums[i], nums[j], nums[left]]);
-
-                left++;
-
-                if (left > nums.Length - 1)
+                if (sum > 0)
                 {
-                    j++;
-                    left = j + 1;
+                    right--;
                 }
-
-                if (j > nums.Length - 2)
+                else if (sum < 0)
                 {
-                    i++;
-                    j = i + 1;
-                    left = i + 2;
+                    left++;
+                }
+                else
+                {
+                    InsertTriplet(triplets, [nums[i], nums[left], nums[right]]);
+                    left++;
+                    right--;
                 }
             }
         }
 
-        return triplets;
+        var listOfLists = triplets.Values
+            .Select(arr => (IList<int>)arr.ToList())
+            .ToList();
+        return listOfLists;
     }
 
-    private void InsertTriplet(Dictionary<int, int> dict, List<IList<int>> triplets, int[] triplet)
+    private void InsertTriplet(Dictionary<int, int[]> dict, int[] triplet)
     {
         var hash = GetTripletHash(triplet);
-        if (dict.TryAdd(hash, hash)) triplets.Add(triplet);
+        dict.TryAdd(hash, triplet);
     }
 
     public static int GetTripletHash(int[] triplet)
