@@ -4,28 +4,36 @@ public class WordBreak
 {
     public bool Solve(string str, IList<string> words)
     {
-        Console.WriteLine("str: " + str);
-
-        var hashSet = new HashSet<string>(words);
-
-        return DoesBreak(str, hashSet);
+        var dp = new Dictionary<int, bool>();
+        return DoesBreak(0, str, words, dp);
     }
 
-    private bool DoesBreak(string str, HashSet<string> words)
+    private bool DoesBreak(int currentIndex, string str, IList<string> words, Dictionary<int, bool> dp)
     {
         if (str.Length == 0)
         {
             return true;
         }
 
-        for (int i = 1; i <= str.Length; i++)
+        if (dp.ContainsKey(currentIndex))
         {
-            if (words.Contains(str.Substring(0, i)) && DoesBreak(str.Substring(i),words))
+            return false;
+        }
+
+        foreach (var word in words)
+        {
+            if (!str.StartsWith(word))
+            {
+                continue;
+            }
+
+            if (DoesBreak(currentIndex + word.Length, str.Substring(word.Length), words, dp))
             {
                 return true;
             }
         }
 
+        dp.TryAdd(currentIndex, false);
         return false;
     }
 }

@@ -1,8 +1,10 @@
-﻿using Algorithms.Leetcode.Arrays;
+﻿using Algorithms.DataStructures.Strings;
+using Algorithms.Leetcode.Arrays;
 
 
-var problem = new SpiralMatrix();
+var problem = new WordBreak();
 
-problem.SpiralOrder([[7], [9], [6]]);
-// problem.SpiralOrder([[1, 2, 3], [4, 5, 6], [7, 8, 9]]);
-// problem.SpiralOrder([[1, 2, 3, 4], [5, 6, 7, 8], [9, 10, 11, 12]]);
+Console.WriteLine(problem.Solve("catsandog", ["cats", "dog", "sand", "and", "cat"]));
+Console.WriteLine(problem.Solve("ccbb", ["bc","cb"]));
+Console.WriteLine(problem.Solve("leetcode", ["leet","code"]));
+Console.WriteLine(problem.Solve("ddadddbdddadd", ["dd","ad","da","b"]));
