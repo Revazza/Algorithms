@@ -2,7 +2,7 @@ namespace Algorithms.Leetcode.Arrays;
 
 public class MaximumProductSubarray
 {
-    public int Solve(int[] nums)
+    public int MaxProduct(int[] nums)
     {
         if (nums.Length == 1)
         {
@@ -14,39 +14,34 @@ public class MaximumProductSubarray
         {
             var odd = FindMaxProduct(i, i, nums);
             var even = FindMaxProduct(i, i + 1, nums);
-            Console.WriteLine("Odd :" + odd);
-            Console.WriteLine("Even :" + even);
             var max = Math.Max(odd, even);
-            ans = Math.Max(max, ans);
+            ans = Math.Max(ans, max);
         }
 
         return ans;
     }
 
-
-    private int FindMaxProduct(int l, int r, int[] nums)
+    private int FindMaxProduct(int left, int right, int[] nums)
     {
+        var maxProd = 0;
         var product = 1;
-        while (l >= 0 && r < nums.Length)
+        while (left >= 0 && right < nums.Length)
         {
-            if (nums[l] == 0 || nums[r] == 0)
+            if (left == right)
             {
-                return 0;
-            }
-
-            if (l == r)
-            {
-                product *= nums[l];
+                product = nums[left];
             }
             else
             {
-                product = product * nums[l] * nums[r];
+                product *= nums[left] * nums[right];
             }
 
-            r++;
-            l--;
+            maxProd = Math.Max(maxProd, product);
+
+            left--;
+            right++;
         }
 
-        return product;
+        return maxProd;
     }
 }
