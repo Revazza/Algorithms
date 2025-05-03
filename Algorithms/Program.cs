@@ -7,7 +7,9 @@ using Algorithms.Leetcode.Graphs;
 
 
 var problem = new MinimumWindowSubstring();
-problem.MinWindow("ab","ab").Dump();
-problem.MinWindow("ADOBECODEBANC","ABC").Dump();
-problem.MinWindow("a","a").Dump();
-problem.MinWindow("a","aa").Dump();
+problem.MinWindow("abbbb", "aa").Dump();
+// problem.MinWindow("ADOBECODEBANC", "ABC").Dump();
+// problem.MinWindow("ab", "ab").Dump();
+// problem.MinWindow("a", "a").Dump();
+// problem.MinWindow("a", "aa").Dump();
+// problem.MinWindow("qxsncfwvbslazxuoxnedkukropehlwfbwxqycntdfgghecvdqbhcwtukkauwzzzvystcfohmupvastekunmqiidtjxriyqdyiyapohekxblrurbpgphoykjhjarhtwfduhvkpzumahdxagmivtxvgiepjvxetehnmczddurgdwdecrmzklxqubgfzfjslqizvheadvghrlnvcbxpnuhjxpqywzrkrbjokqpolxxflkapnzeatmltdbrackkwlvmwlbmxbjcmvebieilzwyszckzgulcihpgsssrtdvhaaligvvfrwaqyksegdjqmywfsoyotuxtwieefbjwxjpxvhcemnwzntgfjetdatyydecjgofdzudxbfbqsxpfsvmebijcbhcemfnuvtzupcrthujbuyiovvswdbagjdkxkyrftqbktvdcpogloqajlsgquiyfljcxjveengogbulsitexjeixwqpszoxkzzkiuooiweqxydqjywiiaqhyhwrgkosloetktjuponposfxrdhzdyibhesprjjczoyjhhgyxtnmlulextdatnecsyrlhangonsxxywutligguldpqgiemkymdjufycumwtjupfpdowjkjozzwjdivbvymrdlvzzstkmkpenfcyplnqkjzquutrsgiytdxsvsckftquzstqdihnrgfnbbevjovcutupnyburrpsjijmsqclyjzzk", "fxtusxonrfdrhxjamdkwm").Dump();

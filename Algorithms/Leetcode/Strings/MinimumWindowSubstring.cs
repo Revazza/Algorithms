@@ -2,65 +2,105 @@ namespace Algorithms.DataStructures.Strings;
 
 public class MinimumWindowSubstring
 {
-    public string MinWindow(string str, string t) {
+    public string MinWindow(string str, string t)
+    {
         if (str.Length == 0)
         {
             return string.Empty;
         }
 
-        if (str.Length == 1)
+        var dict = new Dictionary<char, int>();
+        foreach (var c in t)
         {
-            return str == t ? str : string.Empty;
-        }
-        
-        // Input: s = "ADOBECODEBANC", t = "ABC"
-        // ADOB..BANC
-        // Input: s = "ab", t = "b"
-        // 
-
-        var ans = string.Empty;
-        
-        for (int i = 0; i <= str.Length - t.Length; i++)
-        {
-            for (int k = 0; k < str.Length - t.Length - i + 1; k++)
+            if (!dict.TryAdd(c, 1))
             {
-                var sub = str.Substring(i, t.Length + k);
-                if (DoesContain(sub, t))
-                {
-                    if (ans.Length == 0 || sub.Length < ans.Length)
-                    {
-                        ans = sub;
-                        break;
-                    }
-                }
+                dict[c]++;
             }
         }
+
+        var frequency = new Dictionary<char, int>();
+        var left = 0;
+        var right = 0;
+        var ans = string.Empty;
+        // Input: s = "ADOBECODEBANC", t = "ABC"
+        var isConditionMeet = IsConditionMeet(dict, frequency);
+        while (left <= right && right <= str.Length)
+        {
+            if (isConditionMeet)
+            {
+                frequency[str[left]]--;
+                left++;
+            }
+            else
+            {
+                if (right == str.Length)
+                {
+                    break;
+                }
+                
+                if (!frequency.TryAdd(str[right], 1))
+                {
+                    frequency[str[right]]++;
+                }
+
+                right++;
+            }
+
+            if (IsConditionMeet(dict, frequency))
+            {
+                var sub = str.Substring(left, right - left);
+                if (ans.Length == 0 || ans.Length > sub.Length)
+                {
+                    ans = sub;
+                }
+                isConditionMeet = true;
+            }
+            else
+            {
+                isConditionMeet = false;
+            }
+        }
+
+        while (right - left > t.Length)
+        {
+            if (IsConditionMeet(dict, frequency))
+            {
+                var sub = str.Substring(left, right - left);
+                if (ans.Length == 0 || ans.Length > sub.Length)
+                {
+                    ans = sub;
+                }
+            }
+            else
+            {
+                if (frequency.ContainsKey(str[left]))
+                {
+                    frequency[str[left]]--;
+                }
+            }
+
+            left++;
+        }
+
         return ans;
     }
 
-    private bool DoesContain(string str, string t)
+    private bool IsConditionMeet(Dictionary<char, int> dict, Dictionary<char, int> frequency)
     {
-        var charCount = new Dictionary<char, int>();
-        foreach (char c in t)
+        if (dict.Count > frequency.Count)
         {
-            if (charCount.ContainsKey(c))
-                charCount[c]++;
-            else
-                charCount[c] = 1;
+            return false;
         }
-    
-        foreach (char c in str)
+        
+        foreach (var keyPair in dict)
         {
-            if (charCount.ContainsKey(c) && charCount[c] > 0)
+            if (!frequency.ContainsKey(keyPair.Key) ||
+                frequency[keyPair.Key] < keyPair.Value)
             {
-                charCount[c]--;
-            
-                if (charCount.Values.All(count => count == 0))
-                    return true;
+                return false;
             }
         }
-    
-        return false;
-    }
 
+        return true;
+    }
 }
