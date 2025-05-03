@@ -1,13 +1,10 @@
-﻿using System.Text.RegularExpressions;
-using Algorithms.DataStructures.Arrays;
-using Algorithms.DataStructures.Strings;
-using Algorithms.Extensions;
-using Algorithms.Leetcode.Arrays;
+﻿using Algorithms.Extensions;
 using Algorithms.Leetcode.Graphs;
 
 
-var problem = new WordSearch();
-problem.Exist([['A', 'B', 'C', 'E'], ['S', 'F', 'C', 'S'], ['A', 'D', 'E', 'E']], "ABCCED").Dump();
-problem.Exist([['A', 'B'], ['C','D']], "ABCD").Dump();
-problem.Exist([ ['A', 'B', 'C', 'E'], ['S', 'F', 'C', 'S'], ['A', 'D', 'E', 'E'] ], "ABCB").Dump();
-problem.Exist([ ['A', 'B', 'C', 'E'], ['S', 'F', 'E', 'S'], ['A', 'D', 'E', 'E'] ], "ABCESEEEFS").Dump();
+var problem = new CourseSchedule();
+//
+problem.CanFinish(5, [[0, 1], [0, 2], [1, 3], [1, 4], [3, 4]]).Dump();
+problem.CanFinish(20, [[0, 10], [3, 18], [5, 5], [6, 11], [11, 14], [13, 1], [15, 1], [17, 4]]).Dump();
+problem.CanFinish(20, [[5, 5],[0, 10], [3, 18], [6, 11], [11, 14], [13, 1], [15, 1], [17, 4]]).Dump();
+
