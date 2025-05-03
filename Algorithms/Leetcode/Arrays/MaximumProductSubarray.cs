@@ -23,6 +23,7 @@ public class MaximumProductSubarray
 
     private int FindMaxProduct(int left, int right, int[] nums)
     {
+        // [1,0,-5,2,3,-8,-9]
         var maxProd = 0;
         var product = 1;
         while (left >= 0 && right < nums.Length)
@@ -34,6 +35,11 @@ public class MaximumProductSubarray
             else
             {
                 product *= nums[left] * nums[right];
+            }
+
+            if (product == 0)
+            {
+                return maxProd;
             }
 
             maxProd = Math.Max(maxProd, product);
