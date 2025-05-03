@@ -12,15 +12,15 @@ public class MinimumWindowSubstring
         {
             return str == t ? str : string.Empty;
         }
+        
         // Input: s = "ADOBECODEBANC", t = "ABC"
         // ADOB..BANC
         // Input: s = "ab", t = "b"
         // 
 
-
         var ans = string.Empty;
         
-        for (int i = 0; i < str.Length - t.Length; i++)
+        for (int i = 0; i <= str.Length - t.Length; i++)
         {
             for (int k = 0; k < str.Length - t.Length - i + 1; k++)
             {
@@ -30,6 +30,7 @@ public class MinimumWindowSubstring
                     if (ans.Length == 0 || sub.Length < ans.Length)
                     {
                         ans = sub;
+                        break;
                     }
                 }
             }
@@ -37,18 +38,29 @@ public class MinimumWindowSubstring
         return ans;
     }
 
-    private bool DoesContain(string str, string t){
-        foreach(var c in str){
-            var index = t.IndexOf(c);
-            if(index == -1){
-                continue;
-            }
-            t = t.Remove(index, 1);
-            if(t.Length == 0){
-                return true;
+    private bool DoesContain(string str, string t)
+    {
+        var charCount = new Dictionary<char, int>();
+        foreach (char c in t)
+        {
+            if (charCount.ContainsKey(c))
+                charCount[c]++;
+            else
+                charCount[c] = 1;
+        }
+    
+        foreach (char c in str)
+        {
+            if (charCount.ContainsKey(c) && charCount[c] > 0)
+            {
+                charCount[c]--;
+            
+                if (charCount.Values.All(count => count == 0))
+                    return true;
             }
         }
-
+    
         return false;
     }
+
 }
