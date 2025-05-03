@@ -6,10 +6,8 @@ using Algorithms.Leetcode.Arrays;
 using Algorithms.Leetcode.Graphs;
 
 
-var problem = new MinimumWindowSubstring();
-problem.MinWindow("abbbb", "aa").Dump();
-// problem.MinWindow("ADOBECODEBANC", "ABC").Dump();
-// problem.MinWindow("ab", "ab").Dump();
-// problem.MinWindow("a", "a").Dump();
-// problem.MinWindow("a", "aa").Dump();
-// problem.MinWindow("qxsncfwvbslazxuoxnedkukropehlwfbwxqycntdfgghecvdqbhcwtukkauwzzzvystcfohmupvastekunmqiidtjxriyqdyiyapohekxblrurbpgphoykjhjarhtwfduhvkpzumahdxagmivtxvgiepjvxetehnmczddurgdwdecrmzklxqubgfzfjslqizvheadvghrlnvcbxpnuhjxpqywzrkrbjokqpolxxflkapnzeatmltdbrackkwlvmwlbmxbjcmvebieilzwyszckzgulcihpgsssrtdvhaaligvvfrwaqyksegdjqmywfsoyotuxtwieefbjwxjpxvhcemnwzntgfjetdatyydecjgofdzudxbfbqsxpfsvmebijcbhcemfnuvtzupcrthujbuyiovvswdbagjdkxkyrftqbktvdcpogloqajlsgquiyfljcxjveengogbulsitexjeixwqpszoxkzzkiuooiweqxydqjywiiaqhyhwrgkosloetktjuponposfxrdhzdyibhesprjjczoyjhhgyxtnmlulextdatnecsyrlhangonsxxywutligguldpqgiemkymdjufycumwtjupfpdowjkjozzwjdivbvymrdlvzzstkmkpenfcyplnqkjzquutrsgiytdxsvsckftquzstqdihnrgfnbbevjovcutupnyburrpsjijmsqclyjzzk", "fxtusxonrfdrhxjamdkwm").Dump();
+var problem = new WordSearch();
+problem.Exist([['A', 'B', 'C', 'E'], ['S', 'F', 'C', 'S'], ['A', 'D', 'E', 'E']], "ABCCED").Dump();
+problem.Exist([['A', 'B'], ['C','D']], "ABCD").Dump();
+problem.Exist([ ['A', 'B', 'C', 'E'], ['S', 'F', 'C', 'S'], ['A', 'D', 'E', 'E'] ], "ABCB").Dump();
+problem.Exist([ ['A', 'B', 'C', 'E'], ['S', 'F', 'E', 'S'], ['A', 'D', 'E', 'E'] ], "ABCESEEEFS").Dump();
