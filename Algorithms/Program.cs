@@ -1,10 +1,38 @@
 ﻿using Algorithms.Extensions;
-using Algorithms.Leetcode.Graphs;
+
+CanCompleteCircuit([1,2,3,4,5],[3,4,5,1,2]).Dump();
+// CanCompleteCircuit([2,3,4],[3,4,3]).Dump();
 
 
-var problem = new CourseSchedule();
-//
-problem.CanFinish(5, [[0, 1], [0, 2], [1, 3], [1, 4], [3, 4]]).Dump();
-problem.CanFinish(20, [[0, 10], [3, 18], [5, 5], [6, 11], [11, 14], [13, 1], [15, 1], [17, 4]]).Dump();
-problem.CanFinish(20, [[5, 5],[0, 10], [3, 18], [6, 11], [11, 14], [13, 1], [15, 1], [17, 4]]).Dump();
+int CanCompleteCircuit(int[] gas, int[] cost) {
+    for(int i = 0;i < gas.Length; i++){
+        var currGas = gas[i];
 
+        if(currGas < cost[i]){
+            continue;
+        }
+        var station = i == gas.Length - 1 ? 0 : i + 1;
+
+        while(true) {
+            
+            if(currGas < cost[station]){
+                break;
+            }
+                
+            currGas = currGas - cost[station] + gas[station];
+
+            if(station == i){
+                return i;
+            }
+            
+            station++;
+
+            if(station >= gas.Length){
+                station = 0;
+            }
+        }
+            
+    }
+
+    return -1;
+}
