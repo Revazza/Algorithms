@@ -11,10 +11,6 @@ public class RemoveElement
 
         while (l <= r)
         {
-            Console.WriteLine("Tail before: " + tail);
-
-            Console.WriteLine("Left: " + nums[l] + " l " + l);
-            
             if (nums[l] != value)
             {
                 nums[tail] = nums[l];
@@ -23,17 +19,14 @@ public class RemoveElement
                 continue;
             }
 
-            Console.WriteLine("Right: " + nums[r] + " r " + r);
             if (nums[r] != value)
             {
                 nums[tail] = nums[r];
                 tail++;
             }
 
-            Console.WriteLine("Tail now: " + tail);
             l++;
             r--;
-            Console.WriteLine();
         }
 
 
