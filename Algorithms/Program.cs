@@ -3,6 +3,6 @@ using Algorithms.Extensions;
 using Algorithms.Leetcode.Arrays;
 
 //
-var problem = new IntegerToRoman();
-problem.IntToRoman(3749).Dump();
+var problem = new ZigzagConversation();
+problem.Convert("PAYPALISHIRING", 3).Dump();
 
