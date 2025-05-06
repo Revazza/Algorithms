@@ -1,8 +1,7 @@
-﻿using Algorithms.DataStructures.Strings;
+﻿using System.Text;
+using Algorithms.DataStructures.Arrays;
 using Algorithms.Extensions;
 using Algorithms.Leetcode.Arrays;
 
 //
-var problem = new ZigzagConversation();
-problem.Convert("PAYPALISHIRING", 3).Dump();
 

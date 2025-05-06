@@ -4,73 +4,36 @@ public class ZigzagConversation
 {
     public string Convert(string str, int numRows)
     {
-        var matrix = new List<List<char>>();
-
-        var drawingCol = true;
-        for (int i = 0; i < str.Length; i++)
-        {
-
-            if (drawingCol)
-            {
-                matrix.Add(DrawCol(ref i, str, numRows));
-                drawingCol = false;
-                i--;
-            }
-            else
-            {
-                matrix.AddRange(DrawZigZag(ref i, str, numRows));
-                drawingCol = true;
-                i--;
-            }
+        if(numRows == 1){
+            return str;
         }
-
+        // first & last row = i + (numRows - 1) * 2;
         var ans = "";
+        var increment = (numRows - 1) * 2;
+        for(int r = 0; r < numRows; r++){
 
-        for (int col = 0; col < matrix[0].Count; col++)
-        {
-            for (int row = 0; row < matrix.Count; row++)
-            {
-                if (matrix[row][col] == ' ')
-                {
-                    continue;
+            for(int i = r; i < str.Length; i+= increment){
+                ans+= str[i];
+
+                if(r > 0 && r < numRows - 1){
+                    var diagonalIndex = i + increment - 2 * r;
+                    if(diagonalIndex < str.Length){
+                        ans+= str[diagonalIndex];
+                    }
                 }
-                ans += matrix[row][col];
             }
         }
 
         return ans;
+        // numRows = 5
+        // i + 4
+        // i + 3
+        // i + 2
     }
 
-    private List<List<char>> DrawZigZag(ref int i, string str, int numRows)
-    {
-        var result = new List<List<char>>();
-        var startIndex = numRows - 2;
-
-        while (startIndex > 0)
-        {
-            var chars = Enumerable.Repeat(' ', numRows).ToList();
-            chars[startIndex] = str[i];
-            i++;
-            startIndex--;
-            result.Add(chars);
-        }
-
-        return result;
-    }
-
-    private List<char> DrawCol(ref int i, string str, int numRows)
-    {
-        var count = 0;
-        var chars = Enumerable.Repeat(' ', numRows).ToList();
-        var index = 0;
-        while (i < str.Length && count < numRows)
-        {
-            chars[index] = str[i];
-            index++;
-            i++;
-            count++;
-        }
-
-        return chars;
-    }
+    // P     I     N
+    // A   L S   I G
+    // Y  A  H  R
+    // P B   I B
+    // Z     G  
 }
