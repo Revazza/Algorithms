@@ -14,7 +14,7 @@ public class MinimumGeneticMutation
         //     AACCGGTA
         // 
     
-        var mutations = CalculateMutations(startGene, endGene, bank.ToHashSet(), [], []); 
+        var mutations = CalculateMutations(startGene, endGene, bank.ToHashSet(), []); 
         return  mutations <= -1 ? -1 : mutations - 1;
     }
     
