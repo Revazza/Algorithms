@@ -8,5 +8,8 @@ using Algorithms.Leetcode.Backtracking;
 
 var problem = new NQueens();
 
-problem.SolveNQueens(4).DisplayTwoDimension();
+problem.SolveNQueens(5).DisplayTwoDimension();
+
+var list = new List<string>();
+list.remo
 

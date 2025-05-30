@@ -5,8 +5,9 @@ public class NQueens
     public IList<IList<string>> SolveNQueens(int n)
     {
         var result = new List<IList<string>>();
+        var alreadyFound = new List<(int Row, int Col)>();
 
-        FindSolution(n, [], [], result);
+        FindSolution(n, [], [], [],result);
 
         return result;
     }
@@ -15,13 +16,14 @@ public class NQueens
         int n,
         List<(int Row, int Col)> queenPos,
         HashSet<(int Row, int Col)> occupied,
+        List<(int Row, int Col)> alreadyFound,
         IList<IList<string>> result)
     {
         for (int row = 0; row < n; row++)
         {
             for (int col = 0; col < n; col++)
             {
-                if (occupied.Contains((row, col)))
+                if (occupied.Contains((row, col)) || alreadyFound.Contains((row, col)))
                 {
                     continue;
                 }
@@ -33,12 +35,13 @@ public class NQueens
                 occupiedCopy.Add((row, col));
                 
                 FillOccupied(row, col, n, occupiedCopy);
-                FindSolution(n, queenCopy, occupiedCopy, result);
+                FindSolution(n, queenCopy, occupiedCopy, alreadyFound, result);
             }
         }
 
         if (queenPos.Count == n)
         {
+            alreadyFound.AddRange(queenPos);
             result.Add(GenerateBoard(queenPos, n));
             return;
         }
