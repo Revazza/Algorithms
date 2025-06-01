@@ -6,10 +6,7 @@ using Algorithms.Leetcode.Arrays;
 using Algorithms.Leetcode.Backtracking;
 
 
-var problem = new NQueens();
+var problem = new EditDistance();
 
-problem.SolveNQueens(5).DisplayTwoDimension();
-
-var list = new List<string>();
-list.remo
+problem.MinDistance("horse", "ros").Dump();
 
