@@ -14,41 +14,46 @@ public class EditDistance
             return target.Length;
         }
 
-        return CalcMin(0, 0, word, target);
+        // horse
+        // ros
+        
+        return CalcMin(0, 0, word, target, []);
     }
 
-    private int CalcMin(int k, int j, string word, string target)
+    private int CalcMin(
+        int i, 
+        int j, 
+        string word, 
+        string target,
+        Dictionary<(int I, int J), int> cache)
     {
-        if (word == target)
+        if (cache.ContainsKey((i, j)))
         {
-            return 1;
+            return cache[(i, j)];
+        }
+        
+        if (i == word.Length)
+        {
+            return target.Length - j;
         }
 
-        if (j >= target.Length || k >= word.Length)
+        if (j == target.Length)
         {
-            return int.MaxValue;
+            return word.Length - i;
         }
 
-        var result = int.MaxValue;
-        for (int i = k; i < word.Length; i++)
+        if (word[i] == target[j])
         {
-            if (word[i] == target[j])
-            {
-                j++;
-                continue;
-            }
-
-            var insert = CalcMin(i, j + 1, word, target);
-            var delete = CalcMin(i + 1, j, word, target);
-            var replace = CalcMin(i + 1, j + 1, word, target);
-
-            var min = Math.Min(insert, Math.Min(delete, replace));
-            if (min != int.MaxValue)
-            {
-                result = Math.Min(result, min + 1);
-            }
+            return CalcMin(i + 1, j + 1, word, target, cache);
         }
+        
+        var insert = CalcMin(i, j + 1, word, target, cache);
+        var delete = CalcMin(i + 1, j, word, target, cache);
+        var replace = CalcMin(i + 1, j + 1, word, target, cache);
 
-        return result;
+        var min = Math.Min(insert, Math.Min(delete, replace));
+
+        cache[(i, j)] = min + 1;
+        return cache[(i, j)];
     }
 }
