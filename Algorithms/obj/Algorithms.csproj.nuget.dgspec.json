@@ -1,29 +1,26 @@
 {
   "format": 1,
   "restore": {
-    "C:\\Users\\sandro_revazishvili\\Desktop\\code-maze-project\\Algorithms\\Algorithms\\Algorithms.csproj": {}
+    "C:\\Users\\Sandro.Revazishvili\\RiderProjects\\Algorithms\\Algorithms\\Algorithms.csproj": {}
   },
   "projects": {
-    "C:\\Users\\sandro_revazishvili\\Desktop\\code-maze-project\\Algorithms\\Algorithms\\Algorithms.csproj": {
+    "C:\\Users\\Sandro.Revazishvili\\RiderProjects\\Algorithms\\Algorithms\\Algorithms.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "C:\\Users\\sandro_revazishvili\\Desktop\\code-maze-project\\Algorithms\\Algorithms\\Algorithms.csproj",
+        "projectUniqueName": "C:\\Users\\Sandro.Revazishvili\\RiderProjects\\Algorithms\\Algorithms\\Algorithms.csproj",
         "projectName": "Algorithms",
-        "projectPath": "C:\\Users\\sandro_revazishvili\\Desktop\\code-maze-project\\Algorithms\\Algorithms\\Algorithms.csproj",
-        "packagesPath": "C:\\Users\\sandro_revazishvili\\.nuget\\packages\\",
-        "outputPath": "C:\\Users\\sandro_revazishvili\\Desktop\\code-maze-project\\Algorithms\\Algorithms\\obj\\",
+        "projectPath": "C:\\Users\\Sandro.Revazishvili\\RiderProjects\\Algorithms\\Algorithms\\Algorithms.csproj",
+        "packagesPath": "C:\\Users\\Sandro.Revazishvili\\.nuget\\packages\\",
+        "outputPath": "C:\\Users\\Sandro.Revazishvili\\RiderProjects\\Algorithms\\Algorithms\\obj\\",
         "projectStyle": "PackageReference",
         "configFilePaths": [
-          "C:\\Users\\sandro_revazishvili\\AppData\\Roaming\\NuGet\\NuGet.Config",
-          "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
+          "C:\\Users\\Sandro.Revazishvili\\AppData\\Roaming\\NuGet\\NuGet.Config"
         ],
         "originalTargetFrameworks": [
           "net8.0"
         ],
         "sources": {
-          "C:\\Program Files (x86)\\Microsoft SDKs\\NuGetPackages\\": {},
-          "C:\\Program Files\\dotnet\\library-packs": {},
-          "https://aclara.pkgs.visualstudio.com/_packaging/CommonComponent/nuget/v3/index.json": {}
+          "https://api.nuget.org/v3/index.json": {}
         },
         "frameworks": {
           "net8.0": {
@@ -35,7 +32,13 @@
           "warnAsError": [
             "NU1605"
           ]
-        }
+        },
+        "restoreAuditProperties": {
+          "enableAudit": "true",
+          "auditLevel": "low",
+          "auditMode": "direct"
+        },
+        "SdkAnalysisLevel": "9.0.100"
       },
       "frameworks": {
         "net8.0": {
@@ -56,7 +59,7 @@
               "privateAssets": "all"
             }
           },
-          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\8.0.313/PortableRuntimeIdentifierGraph.json"
+          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\9.0.102/PortableRuntimeIdentifierGraph.json"
         }
       }
     }
