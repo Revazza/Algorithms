@@ -1,20 +1,20 @@
 {
   "format": 1,
   "restore": {
-    "C:\\Users\\Sandro.Revazishvili\\RiderProjects\\Algorithms\\Algorithms\\Algorithms.csproj": {}
+    "C:\\Users\\Sandro\\RiderProjects\\Algorithms\\Algorithms\\Algorithms.csproj": {}
   },
   "projects": {
-    "C:\\Users\\Sandro.Revazishvili\\RiderProjects\\Algorithms\\Algorithms\\Algorithms.csproj": {
+    "C:\\Users\\Sandro\\RiderProjects\\Algorithms\\Algorithms\\Algorithms.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "C:\\Users\\Sandro.Revazishvili\\RiderProjects\\Algorithms\\Algorithms\\Algorithms.csproj",
+        "projectUniqueName": "C:\\Users\\Sandro\\RiderProjects\\Algorithms\\Algorithms\\Algorithms.csproj",
         "projectName": "Algorithms",
-        "projectPath": "C:\\Users\\Sandro.Revazishvili\\RiderProjects\\Algorithms\\Algorithms\\Algorithms.csproj",
-        "packagesPath": "C:\\Users\\Sandro.Revazishvili\\.nuget\\packages\\",
-        "outputPath": "C:\\Users\\Sandro.Revazishvili\\RiderProjects\\Algorithms\\Algorithms\\obj\\",
+        "projectPath": "C:\\Users\\Sandro\\RiderProjects\\Algorithms\\Algorithms\\Algorithms.csproj",
+        "packagesPath": "C:\\Users\\Sandro\\.nuget\\packages\\",
+        "outputPath": "C:\\Users\\Sandro\\RiderProjects\\Algorithms\\Algorithms\\obj\\",
         "projectStyle": "PackageReference",
         "configFilePaths": [
-          "C:\\Users\\Sandro.Revazishvili\\AppData\\Roaming\\NuGet\\NuGet.Config"
+          "C:\\Users\\Sandro\\AppData\\Roaming\\NuGet\\NuGet.Config"
         ],
         "originalTargetFrameworks": [
           "net8.0"
@@ -38,7 +38,7 @@
           "auditLevel": "low",
           "auditMode": "direct"
         },
-        "SdkAnalysisLevel": "9.0.100"
+        "SdkAnalysisLevel": "9.0.300"
       },
       "frameworks": {
         "net8.0": {
@@ -54,12 +54,30 @@
           ],
           "assetTargetFallback": true,
           "warn": true,
+          "downloadDependencies": [
+            {
+              "name": "Microsoft.AspNetCore.App.Ref",
+              "version": "[8.0.19, 8.0.19]"
+            },
+            {
+              "name": "Microsoft.NETCore.App.Host.win-x64",
+              "version": "[8.0.19, 8.0.19]"
+            },
+            {
+              "name": "Microsoft.NETCore.App.Ref",
+              "version": "[8.0.19, 8.0.19]"
+            },
+            {
+              "name": "Microsoft.WindowsDesktop.App.Ref",
+              "version": "[8.0.19, 8.0.19]"
+            }
+          ],
           "frameworkReferences": {
             "Microsoft.NETCore.App": {
               "privateAssets": "all"
             }
           },
-          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\9.0.102/PortableRuntimeIdentifierGraph.json"
+          "runtimeIdentifierGraphPath": "C:\\Users\\Sandro\\.dotnet\\sdk\\9.0.304/PortableRuntimeIdentifierGraph.json"
         }
       }
     }
